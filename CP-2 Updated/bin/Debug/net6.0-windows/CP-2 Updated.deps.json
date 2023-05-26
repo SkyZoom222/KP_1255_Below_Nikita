@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CP-2 Updated/1.0.0": {
+        "runtime": {
+          "CP-2 Updated.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CP-2 Updated/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
