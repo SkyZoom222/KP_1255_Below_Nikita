@@ -1,0 +1,16 @@
+{
+"login" : "moderator"
+"password" : "moderator"
+}
+{
+"login" : "common"
+"password" : "common"
+}
+{
+"login" : "admin"
+"password" : "admin"
+}
+{
+"login" : "extended"
+"password" : "extended"
+}
