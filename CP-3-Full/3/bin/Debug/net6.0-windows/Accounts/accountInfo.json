@@ -1,0 +1,28 @@
+{
+"login" : "moderator"
+"Fname" : "qwe"
+"Sname" : "qwe"
+"date" : "24 мая 2023 г."
+"permissions" : "Moderator"
+}
+{
+"login" : "commmon"
+"Fname" : "asd"
+"Sname" : "asd"
+"date" : "24 мая 2023 г."
+"permissions" : "CommonUser"
+}
+{
+"login" : "admin"
+"Fname" : "zxc"
+"Sname" : "zxc"
+"date" : "24 мая 2023 г."
+"permissions" : "Admin"
+}
+{
+"login" : "extended"
+"Fname" : "rty"
+"Sname" : "piopi"
+"date" : "24 мая 2023 г."
+"permissions" : "ExtendedUser"
+}
