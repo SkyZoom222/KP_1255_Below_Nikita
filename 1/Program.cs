@@ -53,7 +53,6 @@ public static class PassGen
                         Console.WriteLine("Неправильно введено кол-во цифр!");
                         GetPass = false;
                     }
-                    UndefinedArg = false;
                 }
                 else if (arg.Contains("--letters=") && minD == 0)
                 {
@@ -66,7 +65,6 @@ public static class PassGen
                         Console.WriteLine("Неправильно введено кол-во букв!");
                         GetPass = false;
                     }
-                    UndefinedArg = false;
                 }
 
                 if (arg.Contains("--uppercase") || arg.Contains("-u"))
@@ -83,7 +81,13 @@ public static class PassGen
 
                 if (arg.Contains("--digits=") || arg.Contains("--letters=")) UndefinedArg = false;
 
-                if (UndefinedArg) Console.WriteLine("Возможно вы неправильно ввели параметр \"" + arg + "\"");
+                if (UndefinedArg)
+                {
+                    Console.WriteLine("Возможно вы неправильно ввели параметр \"" + arg + "\"");
+                    GetPass = false;
+                    Console.WriteLine("Возможные параметры: --length= , --letters= , --digits= , --uppercase / -u , --special / -s \nТакже возможно использование \"//PassGen.exe 10 \", то же самое что \" // PassGen.exe --length=10 \"");
+                    break;
+                }
 
             }
         }
@@ -98,9 +102,7 @@ public static class PassGen
             Console.WriteLine($"Заданное кол-во букв {minL} больше чем общая длина пароля {len}");
             GetPass = false;
         }
-        
-        if (UndefinedArg) Console.WriteLine("Возможные параметры: --length= , --letters= , --digits= , --uppercase / -u , --special / -s \nТакже возможно использование \"//PassGen.exe 10 \", то же самое что \" // PassGen.exe --length=10 \"");
-        
+                
         if (GetPass)
         {
             Password = GetRndPass(len, minL, minD, upper, spec);
@@ -124,7 +126,6 @@ public static class PassGen
             for(int i = 0; i < minL; i++)
                 chars[i] = GetRndChar(currentChar: 4);
             len -= minL;
-            Console.WriteLine(len);
         }
         else if (minD != 0)
         {
@@ -141,7 +142,7 @@ public static class PassGen
         for (int i = 0; i < chars.Length; i++)
         {
             char temp = chars[i];
-            int rndIndex = PassGen.rnd.Next(chars.Length);
+            int rndIndex = rnd.Next(chars.Length);
             chars[i] = chars[rndIndex];
             chars[rndIndex] = temp;
         }
@@ -162,9 +163,9 @@ public static class PassGen
     {
         int id;
 
-        if (currentChar == 4) id = PassGen.rnd.Next(2);
+        if (currentChar == 4) id = rnd.Next(2);
         else if (currentChar != -1) id = currentChar;
-        else id = PassGen.rnd.Next(4);
+        else id = rnd.Next(4);
         switch (id)
         {
             default:
@@ -182,24 +183,24 @@ public static class PassGen
 
     public static char UpperLet()
     {
-        return (char)PassGen.rnd.Next(65, 91);
+        return (char)rnd.Next(65, 91);
     }
 
 
     public static char LowerLet()
     {
-        return (char)PassGen.rnd.Next(97, 123);
+        return (char)rnd.Next(97, 123);
     }
 
     public static char SpecS()
     {
         char[] spec = new char[] { 'q' };
-        return spec[PassGen.rnd.Next(spec.Length)];
+        return spec[rnd.Next(spec.Length)];
     }
 
     public static char Digit()
     {
-        return Convert.ToChar(Convert.ToString(PassGen.rnd.Next(10)));
+        return Convert.ToChar(Convert.ToString(rnd.Next(10)));
     }
 
 }
